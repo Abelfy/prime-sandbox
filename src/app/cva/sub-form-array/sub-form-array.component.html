@@ -1,0 +1,65 @@
+<p-toast></p-toast>
+
+<p-card [formGroup]="form" header="Array" subheader="Tests d'implementation de l'interface ControlValueAccessor - Partie commune" styleClass="shadow-2">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+            <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="addToTab()"></button>
+            <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedLines()" [disabled]="!selectedLines || !selectedLines.length"></button>
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <p-fileUpload mode="basic" accept="image/*" [maxFileSize]="1000000" label="Import" chooseLabel="Import" class="p-mr-2 p-d-inline-block"></p-fileUpload>
+            <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help"></button>
+        </ng-template>
+    </p-toolbar>
+    <p-table #table [value]="(dataSource$ | async)!" [(selection)]="selectedLines" formArrayName="array" [rowHover]="true" styleClass="p-datatable-sm" responsiveLayout="scroll">
+        <ng-template pTemplate="caption">
+            <div class="table-header">
+                <h5 class="p-m-0">Tableau des élèments</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text"  placeholder="Search..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th *ngFor="let col of cols" [pSortableColumn]="col.name">{{col.label}}<p-sortIcon [field]="col.name"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-control let-rowIndex="rowIndex"> 
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="control"></p-tableCheckbox>
+                </td>
+                <td *ngFor="let col of cols" [formGroupName]="rowIndex">
+                    <ng-container *ngIf="col.type === 'select'; else default">
+                        <ps-custom-dropdown [formControlName]="col.name" 
+                        [options]="col.options!" optionLabel='label' 
+                        optionValue='value' 
+                        (onBlur)="onTouched()"></ps-custom-dropdown>
+                    </ng-container>
+                    <ng-template #default>
+                        <input type="text" pInputText [formControlName]="col.name" (blur)="onTouched()"/>
+                    </ng-template>
+                    <small class="p-error block" *ngIf="array.at(rowIndex).get(col.name)?.hasError('required')">{{col.label}} is required.</small>
+                </td>                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="footer" let-columns>
+            <tr>
+                <td *ngFor="let col of columns">
+                {{col.label}}
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            Total <p-badge [value]="(dataSource$ | async)!.length.toString()" severity="success" styleClass="mr-2"></p-badge> elements
+        </ng-template>
+    </p-table>
+</p-card>
+
+<p-confirmDialog header="Confirmation" width="425"></p-confirmDialog>

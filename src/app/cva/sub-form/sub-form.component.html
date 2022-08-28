@@ -1,0 +1,62 @@
+<ng-container *ngIf="form">
+  <p-card
+    [formGroup]="form"
+    header="Group"
+    subheader="Tests d'implementation de l'interface ControlValueAccessor - Partie commune"
+    styleClass="shadow-2"
+  >
+    <div class="formgrid grid">
+      <div class="field col-12">
+        <span class="p-float-label">
+          <p-calendar
+            id="date"
+            formControlName="date"
+            (blur)="onTouched()"
+            [showIcon]="true"
+            dateFormat="dd/mm/yy"
+            [showButtonBar]="true"
+            class="w-full"
+          ></p-calendar>
+          <label for="date">Date : </label>
+        </span>
+      </div>
+      <div class="field col-4 w-full">
+        <span class="p-float-label">
+          <input
+            type="text"
+            pInputText
+            formControlName="addressLine"
+            (blur)="onTouched()"
+            class="w-full"
+          />
+          <label>Address Line </label>
+        </span>
+      </div>
+      <div class="field col-4 w-full">
+        <span class="p-float-label">
+          <input
+            type="text"
+            pInputText
+            formControlName="zipCode"
+            (blur)="onTouched()"
+          />
+          <label>Zip Code</label>
+        </span>
+      </div>
+      <div class="field col-4 w-full">
+        <span class="p-float-label">
+          <input
+            type="text"
+            pInputText
+            formControlName="city"
+            (blur)="onTouched()"
+          />
+          <label>City</label>
+        </span>
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button label="Click" (onClick)="resetWeight()"></p-button>
+    </ng-template>
+  </p-card>
+</ng-container>

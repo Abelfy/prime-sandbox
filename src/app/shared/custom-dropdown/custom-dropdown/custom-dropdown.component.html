@@ -1,0 +1,11 @@
+<p-dropdown 
+    [formControl]="selected" 
+    [options]="options"
+    [optionLabel]="optionLabel"
+    [optionValue]="optionValue"
+    [filter]="true" 
+    [filterBy]="optionLabel"
+	[showClear]="true"
+    [autoDisplayFirst]="false"
+    (onBlur)="onChange($event)">
+</p-dropdown>

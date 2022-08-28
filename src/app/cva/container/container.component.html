@@ -1,0 +1,13 @@
+<form [formGroup]="form">
+  <p-card
+    header="Formulaire"
+    subheader="Implémentation des ControlValueAccessor"
+  >
+    <ps-sub-form formControlName="subA" (resetWeightEmitter)="resetWeight()"></ps-sub-form>
+    <ps-sub-form-array
+      formControlName="array"
+      [cols]="cols"
+      [event]="formCustomEvent"
+    ></ps-sub-form-array>
+  </p-card>
+</form>
