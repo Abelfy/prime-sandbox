@@ -25,6 +25,11 @@ export class AppComponent implements OnInit {
             label: 'Redis',
             icon : 'pi pi-fw pi-database',
             routerLink : ['/redis'],
+          },
+          {
+            label: 'Virtual Scroll',
+            icon : 'pi pi-fw pi-database',
+            routerLink : ['/virtual-scroll'],
           }
         ]
         

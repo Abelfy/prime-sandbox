@@ -9,10 +9,12 @@ import { StoreModule } from '@ngrx/store';
 import { SharedModule } from './shared/shared.module';
 
 import { HttpClientModule } from '@angular/common/http';
+import { ContainerComponent } from './virtual-scroll/container/container.component';
+import { TableComponent } from './virtual-scroll/table/table.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ContainerComponent, TableComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

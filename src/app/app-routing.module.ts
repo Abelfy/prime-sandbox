@@ -10,6 +10,10 @@ const routes: Routes = [
     path: 'redis',
     loadChildren: () => import('./redis/redis.module').then((m) => m.RedisModule),
   },
+  {
+    path: 'virtual-scroll',
+    loadChildren: () => import('./virtual-scroll/virtual-scroll.module').then((m) => m.VirtualScrollModule),
+  },
 ];
 
 @NgModule({

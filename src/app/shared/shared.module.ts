@@ -14,6 +14,14 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ToolbarModule } from 'primeng/toolbar';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {SkeletonModule} from 'primeng/skeleton';
+
+const angular_modules = [
+  CommonModule,
+  ReactiveFormsModule,
+  HttpClientModule
+];
 
 const primeng_modules = [
   MenubarModule,
@@ -27,13 +35,18 @@ const primeng_modules = [
   FileUploadModule,
   ToastModule,
   ConfirmDialogModule,
+  SkeletonModule  
+];
+
+const sandbox_modules = [
+  CustomDropdownModule,
 ];
 
 const primeng_provider = [MessageService,ConfirmationService];
 @NgModule({
   declarations: [],
-  imports: [CommonModule,ReactiveFormsModule, CustomDropdownModule, primeng_modules],
-  exports: [CommonModule,ReactiveFormsModule, CustomDropdownModule, primeng_modules],
+  imports: [angular_modules, primeng_modules ,sandbox_modules],
+  exports: [angular_modules, primeng_modules ,sandbox_modules],
   providers: [primeng_provider],
 })
 export class SharedModule {}
