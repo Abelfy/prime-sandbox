@@ -1,0 +1,75 @@
+<div class="flex">
+  <form [formGroup]="form">
+    <div class="grid p-fluid">
+      <div class="p-inputgroup gap-1">
+        <input
+          type="text"
+          class="c-1"
+          pInputText
+          formControlName="sexe"
+          maxlength="1"
+          (blur)="onTouched()"
+          (keyup)="onDigitInput($event)"
+        />
+        <input
+          type="text"
+          class="c-2"
+          pInputText
+          formControlName="annee"
+          maxlength="2"
+          (blur)="onTouched()"
+          (keyup)="onDigitInput($event)"
+        />
+        <input
+          type="text"
+          class="c-2"
+          pInputText
+          formControlName="mois"
+          maxlength="2"
+          (blur)="onTouched()"
+          (keyup)="onDigitInput($event)"
+        />
+        <input
+          type="text"
+          class="c-2"
+          pInputText
+          formControlName="departement"
+          maxlength="2"
+          (blur)="onTouched()"
+          (keyup)="onDigitInput($event)"
+        />
+        <input
+          type="text"
+          class="c-3"
+          pInputText
+          formControlName="commune"
+          maxlength="3"
+          (blur)="onTouched()"
+          (keyup)="onDigitInput($event)"
+        />
+        <input
+          type="text"
+          class="c-3"
+          pInputText
+          formControlName="ordre"
+          maxlength="3"
+          (blur)="onTouched()"
+          (keyup)="onDigitInput($event)"
+        />
+        <input
+          type="text"
+          class="c-2"
+          pInputText
+          formControlName="cle"
+          maxlength="2"
+          (blur)="onTouched()"
+          (keyup)="onDigitInput($event)"
+        />
+      </div>
+    </div>
+    <div>
+      {{ form.value | json }}
+      {{ form.errors }}
+    </div>
+  </form>
+</div>

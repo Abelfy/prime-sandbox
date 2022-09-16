@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'virtual-scroll',
     loadChildren: () => import('./virtual-scroll/virtual-scroll.module').then((m) => m.VirtualScrollModule),
   },
+  {
+    path :'nir',
+    loadChildren: () => import('./nir/nir.module').then((m) => m.NirModule),
+  }
 ];
 
 @NgModule({

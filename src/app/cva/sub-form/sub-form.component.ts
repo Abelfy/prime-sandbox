@@ -1,4 +1,11 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import {
   AbstractControl,
   ControlValueAccessor,
@@ -44,8 +51,7 @@ export class SubFormComponent
     city: [null, [Validators.required]],
   });
   @Output()
-  public resetWeightEmitter = new EventEmitter<string>()
-
+  public resetWeightEmitter = new EventEmitter<string>();
 
   //----------------- Functions ---------------//
 
@@ -65,6 +71,7 @@ export class SubFormComponent
     }
   }
 
+  
   validate(control: AbstractControl<any, any>): ValidationErrors | null {
     return this.form.errors;
   }
@@ -94,7 +101,7 @@ export class SubFormComponent
     }
   }
 
-  public resetWeight(){
+  public resetWeight() {
     this.resetWeightEmitter.emit('resetWeigth');
   }
 

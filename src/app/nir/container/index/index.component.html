@@ -1,0 +1,7 @@
+<div class="container">
+  <form [formGroup]="form">
+    <ps-nir-input formControlName="nir"> </ps-nir-input>
+  </form>
+  {{ form.value | json }}
+  {{ form.errors ? form.errors : (null | json) }}
+</div>

@@ -26,7 +26,11 @@ export class ContainerComponent implements OnInit, OnDestroy {
   ];
 
   public form: FormGroup = this._fb.group({
-    subA: [null, Validators.required],
+    subA: [{
+      date: new Date(),
+      addressLine: 'Salut',
+      zipCode: "80480",
+      city: "Dury"}, Validators.required],
     array: [null, Validators.required],
   });
 
@@ -90,15 +94,8 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form.patchValue({
-      subA: {
-        date: new Date(),
-        addressLine2: null,
-        zipCode: null,
-        city: null,
-        resetWeight: false,
-      },
       array: this.tab,
-    });
+    }); 
 
     this.formSub$ = this.form.valueChanges
       .pipe(
